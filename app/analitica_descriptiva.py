@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import csv
 
+file_name = "data/data_base.csv"
+
 def update(file_name):
     datos_pandas = leer_datos(file_name)
     funcion_maximo(datos_pandas)
