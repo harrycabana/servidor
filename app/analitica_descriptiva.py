@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
 import numpy as np
+import csv
 
 def update(file_name):
     datos_pandas = leer_datos(file_name)
