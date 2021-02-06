@@ -8,7 +8,7 @@ file_name = "data/data_base.csv"
 def update(file_name):
     datos_pandas = leer_datos(file_name)
     funcion_maximo(datos_pandas, file_name)
-    funcion_Minimo(datos_pandas, file_name)
+    funcion_minimo(datos_pandas, file_name)
     funcion_Mediana(datos_pandas, file_name)
     funcion_Promedio(datos_pandas, file_name)
     funcion_Desviacion(datos_pandas, file_name)
