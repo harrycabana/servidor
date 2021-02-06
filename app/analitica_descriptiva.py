@@ -23,7 +23,7 @@ def funcion_maximo(datos, file_name):
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
     
-    resultado_max = max(valor_temperatura)
+    resultado_max = max(valores_temperatura)
     
     dato_guardar = [1, date_string, "Maximo", resultado_max]
     guardar(dato_guardar, file_name)
@@ -34,7 +34,7 @@ def funcion_minimo(datos, file_name):
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
     
-    resultado_min = min(valor_temperatura)
+    resultado_min = min(valores_temperatura)
     
     dato_guardar = [1, date_string, "Minimo", resultado_min]
     guardar(dato_guardar, file_name)
@@ -42,9 +42,9 @@ def funcion_minimo(datos, file_name):
 def funcion_Promedio(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
-    valor_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
+    valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
     
-    resultado_promedio = np.mean(valor_temperatura)
+    resultado_promedio = np.mean(valores_temperatura)
     
     dato_guardar = data = [1, date_string, "Promedio", resultado_promedio]
     guardar(dato_guardar, file_name)
@@ -52,9 +52,9 @@ def funcion_Promedio(datos, file_name):
 def funcion_Mediana(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
-    valor_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
+    valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
     
-    resultado_mediana = np.median(valor_temperatura)
+    resultado_mediana = np.median(valores_temperatura)
     
     dato_guardar = data = [1, date_string, "Mediana", resultado_mediana]
     guardar(dato_guardar, file_name)
@@ -63,9 +63,9 @@ def funcion_Mediana(datos, file_name):
 def funcion_Varianza(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
-    valor_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
+    valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
    
-    resultado_varianza = np.var(valor_temperatura)
+    resultado_varianza = np.var(valores_temperatura)
 
     dato_guardar = data = [1, date_string, "Varianza", resultado_varianza]
     guardar(dato_guardar, file_name)
@@ -73,9 +73,9 @@ def funcion_Varianza(datos, file_name):
 def funcion_Desviacion(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
-    valor_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
+    valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
     
-    resultado_desviacion = np.std(valor_temperatura)
+    resultado_desviacion = np.std(valores_temperatura)
     
     dato_guardar = data = [1, date_string, "Desviacion", resultado_desviacion]
     guardar(dato_guardar, file_name)
