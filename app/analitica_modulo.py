@@ -7,7 +7,7 @@ import time
 import pika
 
 class analitica():
-    ventana = 10
+    ventana = 15
     pronostico = 3
     file_name = "data_base.csv"
     servidor = "rabbit"
@@ -24,8 +24,15 @@ class analitica():
 
     def update_data(self, msj):
         msj_vetor = msj.split(",")
-        new_data = {"fecha": msj_vetor[0], "sensor": msj_vetor[1], "valor": float(msj_vetor[2])}
+        now = datetime.now()
+        date_time = now.strftime('%d.%m.%Y %H:%M:%S')
+        new_data = {"fecha": date_time, "sensor": msj_vetor[0], "valor": float(msj_vetor[1])}
         self.df = self.df.append(new_data, ignore_index=True)
+        new_data = {"fecha": date_time, "sensor": msj_vetor[2], "valor": float(msj_vetor[3])}
+        self.df = self.df.append(new_data, ignore_index=True)
+        self.publicar("temperatura",msj_vetor[1])
+        self.publicar("humedad",msj_vetor[3])
+
         self.analitica_descriptiva()
         self.analitica_predictiva()
         self.guardar()
@@ -35,7 +42,7 @@ class analitica():
 
     def analitica_descriptiva(self):
         self.operaciones("temperatura")
-        self.operaciones("densidad")
+        self.operaciones("humedad")
 
     def operaciones(self, sensor):
         df_filtrado = self.df[self.df["sensor"] == sensor]
@@ -49,7 +56,7 @@ class analitica():
 
     def analitica_predictiva(self):
         self.regresion("temperatura")
-        self.regresion("densidad")
+        self.regresion("humedad")
 
     def regresion(self, sensor):
         df_filtrado = self.df[self.df["sensor"] == sensor]
